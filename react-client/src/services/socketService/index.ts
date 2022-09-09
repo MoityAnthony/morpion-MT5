@@ -1,5 +1,5 @@
 import { io, Socket } from "socket.io-client";
-import { DefaultEventsMap } from '@socket.io/component-emitter';
+import { DefaultEventsMap } from "socket.io-client/build/typed-events";
 
 class SocketService {
   public socket: Socket | null = null;
