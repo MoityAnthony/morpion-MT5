@@ -14,7 +14,7 @@ import socketServer from "./socket";
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "9000");
+var port = process.env.PORT || "9000";
 app.set("port", port);
 
 /**
@@ -32,26 +32,6 @@ server.on("error", onError);
 server.on("listening", onListening);
 
 const io = socketServer(server);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
