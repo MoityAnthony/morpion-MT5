@@ -9,6 +9,8 @@ const GameContainer = styled.div`
   flex-direction: column;
   font-family: "Zen Tokyo Zoo", cursive;
   position: relative;
+  border: 12px solid #04bf81;
+  border-radius: 20px;
 `;
 
 const RowContainer = styled.div`
@@ -29,12 +31,11 @@ const Cell = styled.div<ICellProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
   cursor: pointer;
-  border-top: ${({ borderTop }) => borderTop && "3px solid #8e44ad"};
-  border-left: ${({ borderLeft }) => borderLeft && "3px solid #8e44ad"};
-  border-bottom: ${({ borderBottom }) => borderBottom && "3px solid #8e44ad"};
-  border-right: ${({ borderRight }) => borderRight && "3px solid #8e44ad"};
+  border-top: ${({ borderTop }) => borderTop && "6px solid #04bf81"};
+  border-left: ${({ borderLeft }) => borderLeft && "6px solid #04bf81"};
+  border-bottom: ${({ borderBottom }) => borderBottom && "6px solid #04bf81"};
+  border-right: ${({ borderRight }) => borderRight && "6px solid #04bf81"};
   transition: all 270ms ease-in-out;
 
   &:hover {
@@ -54,7 +55,7 @@ const PlayStopper = styled.div`
 
 const X = styled.span`
   font-size: 100px;
-  color: #8e44ad;
+  color: #04bf81;
   &::after {
     content: "X";
   }
@@ -62,7 +63,7 @@ const X = styled.span`
 
 const O = styled.span`
   font-size: 100px;
-  color: #8e44ad;
+  color: #04bf81;
   &::after {
     content: "O";
   }
@@ -195,10 +196,11 @@ export function Game() {
   }, []);
 
   return (
+    <>
+    {!isGameStarted && (
+      <h2>Waiting for Other Player to Join to Start the Game!</h2>
+    )}
     <GameContainer>
-      {!isGameStarted && (
-        <h2>Waiting for Other Player to Join to Start the Game!</h2>
-      )}
       {(!isGameStarted || !isPlayerTurn) && <PlayStopper />}
       {matrix.map((row, rowIdx) => {
         return (
@@ -226,5 +228,6 @@ export function Game() {
         );
       })}
     </GameContainer>
+    </>
   );
 }

@@ -18,7 +18,8 @@ const AppContainer = styled.div`
 
 const WelcomeText = styled.h1`
   margin: 0;
-  color: #8e44ad;
+  color: #000;
+  text-transform: uppercase;
 `;
 
 const MainContainer = styled.div`
@@ -26,7 +27,8 @@ const MainContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
 `;
 
 function App() {
